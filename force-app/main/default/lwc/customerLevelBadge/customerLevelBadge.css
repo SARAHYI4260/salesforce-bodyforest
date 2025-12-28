@@ -1,0 +1,137 @@
+/* 카드 전체: "깔끔 + 그린 테두리 + 가운데 크게" */
+.tierCard {
+  position: relative;
+  border-radius: 12px;
+  padding: 14px 16px 16px;
+  border: 2px solid rgba(46, 132, 74, 0.55);
+  background: #fff;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+/* 상단 미니 라인 */
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.9;
+}
+
+.ic {
+  transform: translateY(-1px);
+}
+
+.mini {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+/* 가운데 큰 텍스트 */
+.main {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  padding: 6px 8px;
+  border-radius: 10px;
+}
+
+/* 서브 텍스트 */
+.sub {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+/* 왼쪽 작은 상태 점 */
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #9aa0a6;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+}
+
+/* 등급별 스타일 */
+.vip {
+  color: #1b1f2a;
+  background: linear-gradient(
+    135deg,
+    rgba(130, 90, 255, 0.14),
+    rgba(0, 210, 255, 0.10)
+  );
+}
+.vipDot {
+  background: #7a5cff;
+}
+
+.gold {
+  color: #2b2200;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 198, 0, 0.22),
+    rgba(255, 129, 0, 0.10)
+  );
+}
+.goldDot {
+  background: #ffb300;
+}
+
+.silver {
+  color: #1f2b33;
+  background: linear-gradient(
+    135deg,
+    rgba(160, 170, 185, 0.22),
+    rgba(220, 230, 240, 0.16)
+  );
+}
+.silverDot {
+  background: #8fa0b3;
+}
+
+.bronze {
+  color: #2a1406;
+  background: linear-gradient(
+    135deg,
+    rgba(205, 127, 50, 0.18),
+    rgba(255, 170, 120, 0.10)
+  );
+}
+.bronzeDot {
+  background: #c77c3d;
+}
+
+/* VIP만 살짝 shimmer */
+.spark {
+  position: absolute;
+  inset: -40% -40%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0) 55%
+  );
+  transform: rotate(18deg);
+  animation: shimmer 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-18%) rotate(18deg);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translateX(18%) rotate(18deg);
+    opacity: 0.42;
+  }
+  100% {
+    transform: translateX(-18%) rotate(18deg);
+    opacity: 0.25;
+  }
+}

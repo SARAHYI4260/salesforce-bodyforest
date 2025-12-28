@@ -1,0 +1,32 @@
+/* 공통 박스 프레임 스타일 */
+.custom-box {
+    padding: 1.5rem;
+    border-radius: 12px; /* 모서리를 둥글게 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    margin: 0.5rem;
+}
+
+/* 1번 탭 (계약) 테마: 흰색 배경, 회색 테두리 */
+.contract-theme {
+    background-color: #ffffff;
+    border: 1px solid #c9c9c9;
+}
+
+/* 2번 탭 (AI) 테마: 연한 보라색 배경 느낌 (스크린샷 유사) */
+.ai-theme {
+    background-color: #f8f8ff; /* 아주 연한 푸른빛/보라빛 */
+    border: 1px solid #dcdcf5;
+}
+
+/* 헤더 아이콘과 텍스트 정렬 */
+.header-row {
+    display: flex;
+    align-items: center;
+}
+
+/* AI 추천 대본 박스 내부 스타일 */
+.ai-content {
+    background-color: #fff;
+    border-left: 5px solid #5a3ba7; /* 왼쪽에 진한 보라색 포인트 */
+    border-radius: 4px;
+}

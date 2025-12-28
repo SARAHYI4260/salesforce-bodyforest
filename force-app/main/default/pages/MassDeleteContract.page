@@ -1,0 +1,28 @@
+<apex:page standardController="Contract" 
+           recordSetVar="contracts" 
+           extensions="MassDeleteExtension">
+    <script type="text/javascript">
+        var selectedIds = '{!selectedIds}';
+        
+        if (!selectedIds || selectedIds.trim() === '') {
+            alert('삭제할 레코드를 최소 하나 이상 선택해주세요.');
+            window.history.back();
+        } else {
+            // ✅ Flow API Name 확인: Mass_Delete_Flow
+            var flowUrl = '/flow/Mass_Delete_Flow';
+            var params = '?recordIdString=' + encodeURIComponent(selectedIds);
+            
+            // ✅ 무한 루프 방지: 원래 리스트 뷰 주소(retURL) 가져오기
+            var urlParams = new URLSearchParams(window.location.search);
+            var originalRetUrl = urlParams.get('retURL');
+            
+            // retURL이 없으면 Contract 기본 리스트로 이동
+            if (!originalRetUrl) {
+                originalRetUrl = '/lightning/o/Contract/list';
+            }
+            
+            params += '&retURL=' + encodeURIComponent(originalRetUrl);
+            window.location.href = flowUrl + params;
+        }
+    </script>
+</apex:page>

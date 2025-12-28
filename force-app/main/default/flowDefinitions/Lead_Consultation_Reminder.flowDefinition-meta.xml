@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>15</activeVersionNumber>
+    <description>상담 후 리마인드 메일 발송</description>
+    <masterLabel>Wrong Lead Consultation Reminder15</masterLabel>
+</FlowDefinition>

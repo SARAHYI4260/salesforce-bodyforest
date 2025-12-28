@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <customProperties>
+        <name>ScreenProgressIndicator</name>
+        <value>
+            <stringValue>{&quot;location&quot;:&quot;top&quot;,&quot;type&quot;:&quot;simple&quot;}</stringValue>
+        </value>
+    </customProperties>
+    <dynamicChoiceSets>
+        <name>pcs_IntrestProduct</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>ProductInterest__c</picklistField>
+        <picklistObject>Lead</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>pcs_LeadSource</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>LeadSource</picklistField>
+        <picklistObject>Lead</picklistObject>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <formulas>
+        <name>Formatted_Phone_Formula</name>
+        <dataType>String</dataType>
+        <expression>/* 기호나 공백을 제거한 순수 숫자만 추출 (치환 중첩 오류 방지) */
+IF(
+  LEN(SUBSTITUTE(SUBSTITUTE({!Input_Phone.value}, &quot;-&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;)) = 11,
+  LEFT(SUBSTITUTE(SUBSTITUTE({!Input_Phone.value}, &quot;-&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;), 3) &amp; &quot;-&quot; &amp; 
+  MID(SUBSTITUTE(SUBSTITUTE({!Input_Phone.value}, &quot;-&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;), 4, 4) &amp; &quot;-&quot; &amp; 
+  RIGHT(SUBSTITUTE(SUBSTITUTE({!Input_Phone.value}, &quot;-&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;), 4),
+  IF(
+    LEN(SUBSTITUTE(SUBSTITUTE({!Input_Phone.value}, &quot;-&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;)) = 10,
+    LEFT(SUBSTITUTE(SUBSTITUTE({!Input_Phone.value}, &quot;-&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;), 3) &amp; &quot;-&quot; &amp; 
+    MID(SUBSTITUTE(SUBSTITUTE({!Input_Phone.value}, &quot;-&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;), 4, 3) &amp; &quot;-&quot; &amp; 
+    RIGHT(SUBSTITUTE(SUBSTITUTE({!Input_Phone.value}, &quot;-&quot;, &quot;&quot;), &quot; &quot;, &quot;&quot;), 4),
+    {!Input_Phone.value}
+  )
+)</expression>
+    </formulas>
+    <interviewLabel>StoreNewLeadScreen {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>StoreNewLeadScreen</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>CreateNewLead</name>
+        <label>리드 생성</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Email</field>
+            <value>
+                <elementReference>Input_Email.value</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>FirstName</field>
+            <value>
+                <elementReference>Input_FirstName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <elementReference>Input_LastName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LeadSource</field>
+            <value>
+                <elementReference>Input_LeadSource</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phone</field>
+            <value>
+                <elementReference>Formatted_Phone_Formula</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>ProductInterest__c</field>
+            <value>
+                <elementReference>Input_InterestProduct</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Lead</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <screens>
+        <name>ShopVisitorInfo</name>
+        <label>매장 방문객 정보 등록</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>CreateNewLead</targetReference>
+        </connector>
+        <fields>
+            <name>Input_LastName</name>
+            <dataType>String</dataType>
+            <fieldText>성 (필수)</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Input_FirstName</name>
+            <dataType>String</dataType>
+            <fieldText>이름 (필수)</fieldText>
+            <fieldType>InputField</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Input_Phone</name>
+            <extensionName>flowruntime:phone</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>휴대폰번호</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Input_Email</name>
+            <extensionName>flowruntime:email</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Email (필수)</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+            <validationRule>
+                <errorMessage>&lt;p&gt;올바른 이메일 형식(예: user@bodyforest.com)으로 입력해주세요.&lt;/p&gt;</errorMessage>
+                <formulaExpression>REGEX({!Input_Email.value}, &quot;^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$&quot;)</formulaExpression>
+            </validationRule>
+        </fields>
+        <fields>
+            <name>Input_LeadSource</name>
+            <choiceReferences>pcs_LeadSource</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>방문 경로 (필수)</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Input_InterestProduct</name>
+            <choiceReferences>pcs_IntrestProduct</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>관심 제품</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <nextOrFinishButtonLabel>완료</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>ShopVisitorInfo</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+</Flow>

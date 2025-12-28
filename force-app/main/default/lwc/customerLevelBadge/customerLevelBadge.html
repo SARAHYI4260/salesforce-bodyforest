@@ -1,0 +1,30 @@
+<template>
+  <section class="tierCard" aria-label="Customer Level">
+    <div class="topRow">
+      <div class={dotClass} title={tierLabel}></div>
+
+      <template if:true={safeIconName}>
+        <lightning-icon
+          icon-name={safeIconName}
+          size="x-small"
+          class="ic"
+          alternative-text="Customer Level"
+        ></lightning-icon>
+      </template>
+
+      <span class="mini">{miniLabel}</span>
+    </div>
+
+    <div class="main">
+      <div class={titleClass}>{tierLabel}</div>
+
+      <template if:true={subtext}>
+        <div class="sub">{subtext}</div>
+      </template>
+    </div>
+
+    <template if:true={showSpark}>
+      <div class="spark" aria-hidden="true"></div>
+    </template>
+  </section>
+</template>

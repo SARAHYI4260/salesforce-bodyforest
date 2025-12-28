@@ -1,0 +1,33 @@
+<aura:component implements="lightning:recordHomeTemplate" description="3-Column Layout with Split Header" access="global">
+    <!-- 에러 방지를 위해 기존에 있던 이름들을 그대로 사용합니다 -->
+    <aura:attribute name="header" type="Aura.Component[]" /> <!-- 메인 헤더용 -->
+    <aura:attribute name="header_left" type="Aura.Component[]" /> <!-- 프로필용 추가 -->
+    <aura:attribute name="main_left" type="Aura.Component[]" /> <!-- 왼쪽 사이드바 -->
+    <aura:attribute name="main_center" type="Aura.Component[]" /> <!-- 중앙 피드/챗봇 -->
+    <aura:attribute name="main_right" type="Aura.Component[]" /> <!-- 오른쪽 지식/요약 -->
+
+    <div class="template-container" style="background-color: #E3F0E9; min-height: 100vh;">
+        <!-- 상단 헤더 영역 (좌:우 비율 3:9) -->
+        <div class="slds-grid slds-wrap slds-p-around_small">
+            <div class="slds-col slds-size_3-of-12 slds-p-right_small">
+                {!v.header_left} <!-- 새로 만든 프로필 칸 -->
+            </div>
+            <div class="slds-col slds-size_9-of-12">
+                {!v.header} <!-- 기존 header 이름을 메인 헤더로 사용 -->
+            </div>
+        </div>
+
+        <!-- 하단 3단 컬럼 영역 (비율 3:6:3) -->
+        <div class="slds-grid slds-wrap slds-p-horizontal_small slds-p-bottom_small">
+            <div class="slds-col slds-size_3-of-12 slds-p-right_x-small">
+                {!v.main_left}
+            </div>
+            <div class="slds-col slds-size_6-of-12">
+                {!v.main_center}
+            </div>
+            <div class="slds-col slds-size_3-of-12 slds-p-left_x-small overflow-fix">
+                {!v.main_right}
+            </div>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,88 @@
+<template>
+    <div class="slds-box slds-theme_default slds-p-around_medium">
+        
+        <!-- 삭제 진행 중 -->
+        <template if:true={isDeleting}>
+            <div class="slds-text-align_center">
+                <lightning-spinner 
+                    alternative-text="Deleting records..." 
+                    size="medium">
+                </lightning-spinner>
+                <p class="slds-m-top_small slds-text-heading_small">
+                    Deleting {recordCount} record(s)...
+                </p>
+            </div>
+        </template>
+
+        <!-- 완전 성공 -->
+        <template if:true={showSuccess}>
+            <div class="slds-text-align_center">
+                <div class="slds-m-bottom_small">
+                    <lightning-icon 
+                        icon-name="utility:success" 
+                        variant="success" 
+                        size="large">
+                    </lightning-icon>
+                </div>
+                <h2 class="slds-text-heading_medium slds-text-color_success">
+                    Success!
+                </h2>
+                <p class="slds-m-top_small">
+                    {successMessage}
+                </p>
+            </div>
+        </template>
+
+        <!-- 부분 성공 -->
+        <template if:true={showPartialSuccess}>
+            <div class="slds-text-align_center">
+                <div class="slds-m-bottom_small">
+                    <lightning-icon 
+                        icon-name="utility:warning" 
+                        variant="warning" 
+                        size="large">
+                    </lightning-icon>
+                </div>
+                <h2 class="slds-text-heading_medium slds-text-color_warning">
+                    Partial Success
+                </h2>
+                <p class="slds-m-top_small">
+                    {partialMessage}
+                </p>
+                <div class="slds-m-top_small slds-text-align_left">
+                    <p class="slds-text-title">Errors:</p>
+                    <lightning-formatted-text 
+                        value={errorMessages}
+                        class="slds-text-color_error">
+                    </lightning-formatted-text>
+                </div>
+            </div>
+        </template>
+
+        <!-- 완전 실패 -->
+        <template if:true={showError}>
+            <div class="slds-text-align_center">
+                <div class="slds-m-bottom_small">
+                    <lightning-icon 
+                        icon-name="utility:error" 
+                        variant="error" 
+                        size="large">
+                    </lightning-icon>
+                </div>
+                <h2 class="slds-text-heading_medium slds-text-color_error">
+                    Error
+                </h2>
+                <p class="slds-m-top_small">
+                    Failed to delete records
+                </p>
+                <div class="slds-m-top_small slds-text-align_left">
+                    <lightning-formatted-text 
+                        value={errorMessages}
+                        class="slds-text-color_error">
+                    </lightning-formatted-text>
+                </div>
+            </div>
+        </template>
+
+    </div>
+</template>

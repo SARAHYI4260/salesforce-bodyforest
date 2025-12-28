@@ -1,0 +1,99 @@
+.main-container {
+    width: 100%;
+    font-family: 'Salesforce Sans', sans-serif;
+}
+
+/* 히어로 섹션: 화면 가득 차는 배경 */
+.hero-section {
+    /* 배경 이미지 변경됨: 고급스러운 안마의자/휴식 공간 느낌 */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop'); 
+    background-size: cover;
+    background-position: center; /* 이미지가 가운데 오도록 */
+    height: 600px; /* 높이감 있게 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.brand-title {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* 글씨 더 잘 보이게 그림자 추가 */
+}
+
+.brand-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    font-weight: 300;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* 글씨 더 잘 보이게 그림자 추가 */
+}
+
+.primary-btn {
+    background-color: #4b6cb7; /* BodyForest 브랜드 컬러 */
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background 0.3s;
+}
+
+.primary-btn:hover {
+    background-color: #182848; /* 마우스 올렸을 때 진해짐 */
+}
+
+/* 하단 카드 섹션 */
+.features-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 10%;
+    background-color: #f4f6f9;
+}
+
+.feature-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 40%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.feature-card h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.primary-btn:hover {
+    background-color: #182848;
+}
+
+/* 하단 카드 섹션 */
+.features-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 10%;
+    background-color: #f4f6f9;
+}
+
+.feature-card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 40%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.feature-card h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+}

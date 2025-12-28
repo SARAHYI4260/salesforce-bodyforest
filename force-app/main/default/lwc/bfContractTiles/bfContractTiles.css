@@ -1,0 +1,75 @@
+:host {
+    --bf-color-primary: #1b4332;
+    --bf-color-secondary: #2d6a4f;
+    --bf-color-tertiary: #74c69d;
+    --bf-text-main: #1a1c1e;
+    --bf-text-sub: #9ca3af;
+}
+
+/* 전체 그리드 */
+.bf-tiles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+}
+
+/* 타일 기본 */
+.bf-tile {
+    background: #ffffff;
+    border-radius: 1.25rem;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 상단 컬러 스트립 */
+.bf-tile__top-border {
+    height: 7px;
+    border-radius: 1.25rem 1.25rem 0 0;
+}
+
+.bf-tile__top-border--primary {
+    background: linear-gradient(90deg, #1b4332, #40916c);
+}
+
+.bf-tile__top-border--secondary {
+    background: linear-gradient(90deg, #2d6a4f, #95d5b2);
+}
+
+.bf-tile__top-border--tertiary {
+    background: linear-gradient(90deg, #74c69d, #b7e4c7);
+}
+
+/* 내용 영역 */
+.bf-tile__content {
+    padding: 1.1rem 1.3rem 1.15rem 1.3rem;
+}
+
+.bf-tile__label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--bf-text-sub);
+    margin-bottom: 0.4rem;
+}
+
+.bf-tile__value-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+}
+
+.bf-tile__value {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: var(--bf-color-primary);
+}
+
+.bf-tile__value.currency {
+    font-size: 1.6rem;
+}
+
+.bf-tile__unit {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--bf-text-sub);
+}

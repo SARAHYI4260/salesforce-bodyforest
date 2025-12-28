@@ -1,0 +1,36 @@
+<aura:component implements="lightning:recordHomeTemplate" description="3-Column Layout with Split Header" access="global">
+    <!-- 화면에 들어갈 5개의 영역(Region)을 정의합니다 -->
+    <aura:attribute name="header_left" type="Aura.Component[]" />
+    <aura:attribute name="header_main" type="Aura.Component[]" />
+    <aura:attribute name="left_sidebar" type="Aura.Component[]" />
+    <aura:attribute name="center_main" type="Aura.Component[]" />
+    <aura:attribute name="right_sidebar" type="Aura.Component[]" />
+
+    <div class="slds-p-around_small">
+        <!-- 상단 헤더 영역 (좌:우 비율 3:9) -->
+        <div class="slds-grid slds-wrap slds-m-bottom_small">
+            <div class="slds-col slds-size_9-of-12 slds-p-right_small">
+                {!v.header_left}
+            </div>
+            <div class="slds-col slds-size_3-of-12">
+                {!v.header_main}
+            </div>
+        </div>
+
+        <!-- 하단 3단 컬럼 영역 (비율 3:6:3) -->
+        <div class="slds-grid slds-wrap">
+            <!-- 왼쪽 컬럼 (Contract, Asset) -->
+            <div class="slds-col slds-size_3-of-12 slds-p-right_small">
+                {!v.left_sidebar}
+            </div>
+            <!-- 중앙 컬럼 (Chatbot) -->
+            <div class="slds-col slds-size_6-of-12 slds-p-horizontal_small">
+                {!v.center_main}
+            </div>
+            <!-- 오른쪽 컬럼 (Knowledge, Summary) -->
+            <div class="slds-col slds-size_3-of-12 slds-p-left_small">
+                {!v.right_sidebar}
+            </div>
+        </div>
+    </div>
+</aura:component>

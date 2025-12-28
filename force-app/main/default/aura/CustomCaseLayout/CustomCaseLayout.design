@@ -1,0 +1,10 @@
+<design:component label="2헤더 + 3단 본문 레이아웃">
+    <flexipage:template >
+        <!-- 편집 화면 오른쪽에서 보일 이름들입니다. -->
+        <flexipage:region name="header_left" defaultWidth="Small" />
+        <flexipage:region name="header_right" defaultWidth="Large" />
+        <flexipage:region name="main_left" defaultWidth="Small" />
+        <flexipage:region name="main_center" defaultWidth="Medium" />
+        <flexipage:region name="main_right" defaultWidth="Small" />
+    </flexipage:template>
+</design:component>

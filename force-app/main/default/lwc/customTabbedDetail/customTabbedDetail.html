@@ -1,0 +1,55 @@
+<template>
+    <!-- 1. 전체를 감싸는 탭 컨테이너 -->
+    <lightning-tabset variant="scoped">
+        
+        <!-- [탭 1] 계약 상세 정보 -->
+        <lightning-tab label="계약 상세 (Contract)">
+            <!-- 커스텀 디자인 박스 (CSS 적용됨) -->
+            <div class="custom-box contract-theme">
+                <div class="header-row">
+                    <!-- 아이콘 (표준 아이콘 사용) -->
+                    <lightning-icon icon-name="standard:contract" size="medium"></lightning-icon>
+                    <h2 class="slds-text-heading_medium slds-m-left_small">계약 세부 사항</h2>
+                </div>
+                
+                <div class="slds-m-top_medium">
+                    <!-- 레코드 뷰 폼: 읽기 전용 데이터 표시 -->
+                    <lightning-record-view-form record-id={recordId} object-api-name={objectApiName}>
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size_1-of-2">
+                                <!-- 실제 필드 API명으로 변경 필요 (예: Name, CloseDate) -->
+                                <lightning-output-field field-name="Name"></lightning-output-field>
+                                <lightning-output-field field-name="CloseDate"></lightning-output-field>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-output-field field-name="StageName"></lightning-output-field>
+                                <lightning-output-field field-name="Amount"></lightning-output-field>
+                            </div>
+                        </div>
+                    </lightning-record-view-form>
+                </div>
+            </div>
+        </lightning-tab>
+
+        <!-- [탭 2] Agentforce 인사이트 -->
+        <lightning-tab label="AI 분석 (Insight)">
+            <!-- 다른 스타일의 박스 (CSS 적용됨) -->
+            <div class="custom-box ai-theme">
+                <div class="header-row">
+                    <!-- AI 봇 아이콘 -->
+                    <lightning-icon icon-name="standard:bot" size="medium"></lightning-icon>
+                    <h2 class="slds-text-heading_medium slds-m-left_small">Agentforce Insight</h2>
+                </div>
+                
+                <div class="slds-box slds-theme_default slds-m-top_medium ai-content">
+                    <p><strong>💡 추천 대본:</strong></p>
+                    <p class="slds-m-top_small">
+                        "강 주성님, 현재 사용 중인 안마의자 소음 문제로 불편하시죠? 
+                        메디컬 팬텀 2026은 소음 억제 기술이 탁월합니다."
+                    </p>
+                </div>
+            </div>
+        </lightning-tab>
+
+    </lightning-tabset>
+</template>

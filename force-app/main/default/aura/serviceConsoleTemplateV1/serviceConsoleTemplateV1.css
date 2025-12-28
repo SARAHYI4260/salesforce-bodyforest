@@ -1,0 +1,19 @@
+.THIS .slds-col {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* 오른쪽 사이드바 내용이 넘치지 않게 강제 줄바꿈 및 너비 고정 */
+.THIS .overflow-fix {
+    min-width: 0 !important;
+}
+
+.THIS .overflow-fix section, 
+.THIS .overflow-fix article {
+    max-width: 100% !important;
+    word-break: break-all !important;
+}
+
+.THIS .slds-card {
+    overflow: hidden !important;
+}

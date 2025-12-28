@@ -1,0 +1,43 @@
+<template>
+    <!-- 배경 박스 시작 -->
+    <div class="profile-card">
+        <template if:true={caseRecord.data}>
+            <div class="slds-grid slds-wrap content-wrapper">
+                
+                <!-- 좌측: 프로필 섹션 (이름 상단 + 큰 사진) -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 profile-main">
+                    <div class="name-display-top">{accountName}</div>
+                    <div class="avatar-frame">
+                        <!-- alt를 비워야 사진 위에 글자가 겹치지 않습니다 -->
+                        <img src={profileImageUrl} alt="" class="avatar-img">
+                    </div>
+                </div>
+
+                <!-- 우측: 정보 섹션 (좌:Account / 우:Case 분리) -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 info-main">
+                    <div class="slds-grid slds-gutters">
+                        
+                        <!-- Account 정보 (왼쪽 줄) -->
+                        <div class="slds-col slds-size_1-of-2 border-right">
+                            <h3 class="group-title">고객 정보 (ACCOUNT)</h3>
+                            <div class="field-box"><span class="label">고객 등급</span><span class="value">{customerLevel}</span></div>
+                            <div class="field-box"><span class="label">지역</span><span class="value">{region}</span></div>
+                            <div class="field-box"><span class="label">전화번호</span><span class="value">{phone}</span></div>
+                            <div class="field-box"><span class="label">이메일</span><span class="value">{email}</span></div>
+                        </div>
+
+                        <!-- Case 정보 (오른쪽 줄) -->
+                        <div class="slds-col slds-size_1-of-2">
+                            <h3 class="group-title">사례 정보 (CASE)</h3>
+                            <div class="field-box"><span class="label">사례 번호</span><span class="value">{caseNumber}</span></div>
+                            <div class="field-box"><span class="label">상태</span><span class="value status-text">{status}</span></div>
+                            <div class="field-box"><span class="label">우선순위</span><span class="value">{priority}</span></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,55 @@
+<template>
+    <!-- 로딩 -->
+    <template if:true={isLoading}>
+        <div class="slds-p-around_medium slds-align_absolute-center">
+            <lightning-spinner size="small"></lightning-spinner>
+        </div>
+    </template>
+
+    <!-- 데이터 있음 -->
+    <template if:true={hasData}>
+        <div class="bf-tiles">
+            <!-- 계약 잔여일 -->
+            <section class="bf-tile">
+                <div class="bf-tile__top-border bf-tile__top-border--primary"></div>
+                <div class="bf-tile__content">
+                    <p class="bf-tile__label">계약 잔여일</p>
+                    <div class="bf-tile__value-row">
+                        <span class="bf-tile__value">{remainingDays}</span>
+                        <span class="bf-tile__unit">일</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 월 렌탈료 -->
+            <section class="bf-tile">
+                <div class="bf-tile__top-border bf-tile__top-border--secondary"></div>
+                <div class="bf-tile__content">
+                    <p class="bf-tile__label">월 렌탈료</p>
+                    <div class="bf-tile__value-row">
+                        <span class="bf-tile__value currency">₩{formattedMonthlyFee}</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 납부 회차 (지금은 임시 값) -->
+            <section class="bf-tile">
+                <div class="bf-tile__top-border bf-tile__top-border--tertiary"></div>
+                <div class="bf-tile__content">
+                    <p class="bf-tile__label">납부 회차</p>
+                    <div class="bf-tile__value-row">
+                        <span class="bf-tile__value">{paidCount}</span>
+                        <span class="bf-tile__unit">/ {totalCount}회</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </template>
+
+    <!-- 계약 없음 / 에러 -->
+    <template if:true={error}>
+        <div class="slds-p-around_medium slds-text-color_error">
+            계약 정보를 불러오는 중 오류가 발생했습니다.
+        </div>
+    </template>
+</template>

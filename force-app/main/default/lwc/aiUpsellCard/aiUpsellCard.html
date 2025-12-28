@@ -1,0 +1,87 @@
+<template>
+    <lightning-card icon-name="utility:einstein" title="Agentforce Insight">
+        
+        <template if:true={isLoading}>
+            <div class="slds-p-around_medium" style="height: 150px; position: relative;">
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:false={isLoading}>
+            <template if:false={isEmpty}>
+                <div class="slds-p-horizontal_small slds-p-bottom_small">
+                    
+                    <lightning-tabset variant="scoped" active-tab-value="script">
+                        
+                        <lightning-tab label="이슈 분석" value="analysis" icon-name="utility:warning">
+                            <div class="slds-p-around_small tab-content">
+                                <div class="slds-clearfix slds-m-bottom_x-small">
+                                    <div class="slds-float_left">
+                                        <span class="slds-badge slds-theme_warning">이슈 분석</span>
+                                    </div>
+                                </div>
+                                <div class="insight-box box-warning">
+                                    <div class="slds-media">
+                                        <div class="slds-media__figure">
+                                            <lightning-icon icon-name="utility:topic" size="x-small" variant="error"></lightning-icon>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <lightning-formatted-text value={analysisText}></lightning-formatted-text>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </lightning-tab>
+
+                        <lightning-tab label="추천 제품" value="product" icon-name="utility:light_bulb">
+                            <div class="slds-p-around_small tab-content">
+                                <div class="slds-clearfix slds-m-bottom_x-small">
+                                    <div class="slds-float_left">
+                                        <span class="slds-badge slds-theme_success">추천 제품</span>
+                                    </div>
+                                </div>
+                                <div class="insight-box box-success">
+                                    <div class="slds-media">
+                                        <div class="slds-media__figure">
+                                            <lightning-icon icon-name="standard:product" size="small"></lightning-icon>
+                                        </div>
+                                        <div class="slds-media__body">
+                                            <h3 class="product-title">{productName}</h3>
+                                            <p class="slds-text-body_small slds-m-top_xx-small">{productDesc}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </lightning-tab>
+
+                        <lightning-tab label="스크립트" value="script" icon-name="utility:chat">
+                            <div class="slds-p-around_small tab-content">
+                                <div class="slds-clearfix slds-m-bottom_x-small">
+                                    <div class="slds-float_left">
+                                        <span class="slds-badge slds-theme_inverse">추천 대본</span>
+                                    </div>
+                                    <div class="slds-float_right">
+                                        <lightning-button-icon icon-name="utility:copy" variant="border-filled" onclick={handleCopy} alternative-text="대본 복사" size="small"></lightning-button-icon>
+                                    </div>
+                                </div>
+                                <div class="insight-box box-info">
+                                    <lightning-formatted-text value={scriptText}></lightning-formatted-text>
+                                </div>
+                            </div>
+                        </lightning-tab>
+
+                    </lightning-tabset>
+                </div>
+            </template>
+
+            <template if:true={isEmpty}>
+                <div class="slds-illustration slds-illustration_small">
+                    <div class="slds-text-longform">
+                        <h3 class="slds-text-heading_small">분석 결과가 없습니다.</h3>
+                        <p>Description 필드에서 AI 버튼을 눌러주세요.</p>
+                    </div>
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+</template>

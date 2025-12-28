@@ -1,0 +1,53 @@
+/* 공통 프레임 */
+.custom-frame {
+    padding: 1.5rem;
+    border-radius: px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
+    margin: 0.5rem;
+}
+
+/* 헤더 정렬 */
+.header-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #f3f3f3;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* 탭 1: Case 테마 (흰색 베이스) */
+.case-theme {
+    background-color: #ffffff;
+    border: 1px solid #dddbda;
+}
+
+/* 탭 1 내부: 설명 부분 구분선 */
+.border-top {
+    border-top: 1px dashed #dddbda;
+    padding-top: 10px;
+}
+
+/* 탭 2: AI 테마 (연한 보라색/파란색 톤) */
+.ai-theme {
+    background-color: #f4f6f9;
+    border: 1px solid #c9c7c5;
+}
+
+/* AI 추천 박스 내부 디자인 */
+.ai-box {
+    background-color: white;
+    padding: 15px;
+    border-radius: 16px;
+    border-left: 6px solid #0070d2; /* Salesforce Blue 포인트 */
+}
+
+/* AI 뱃지 스타일 */
+.ai-badge {
+    display: inline-block;
+    background-color: #0070d2;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}

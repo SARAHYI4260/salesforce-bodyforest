@@ -1,0 +1,30 @@
+/* 전체 화면 스크롤바 스타일 적용 (Webkit 기반: Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 8px;              /* 스크롤바 너비 (얇게) */
+    height: 8px;             /* 가로 스크롤바 높이 */
+    background-color: transparent; /* 배경 투명하게 */
+}
+
+/* 스크롤바가 움직이는 막대 (Thumb) */
+::-webkit-scrollbar-thumb {
+    background-color: rgba(144, 147, 153, 0.5); /* 반투명 회색 */
+    border-radius: 10px;      /* 둥근 모서리 (애플 스타일 핵심) */
+    border: 2px solid transparent; /* 여백을 주기 위한 투명 테두리 */
+    background-clip: content-box;  /* 테두리 안쪽만 색칠 */
+}
+
+/* 마우스를 올렸을 때 조금 더 진하게 */
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(144, 147, 153, 0.8);
+}
+
+/* 스크롤바 뒷배경 (Track) */
+::-webkit-scrollbar-track {
+    background-color: transparent; /* 투명하게 처리하여 공간 차지 느낌 줄임 */
+}
+
+/* 파이어폭스(Firefox) 호환성 코드 */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(144, 147, 153, 0.5) transparent;
+}

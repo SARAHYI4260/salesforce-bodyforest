@@ -1,0 +1,10 @@
+<design:component label="Service Console Custom 3-Column">
+    <flexipage:template>
+        <!-- 앱 빌더에서 보일 칸의 이름을 정합니다 -->
+        <flexipage:region name="header_left" label="Header Left (Profile)" defaultWidth="Small" />
+        <flexipage:region name="header_main" label="Header Main (Case Info)" defaultWidth="Large" />
+        <flexipage:region name="left_sidebar" label="Left Sidebar (Contract/Asset)" defaultWidth="Small" />
+        <flexipage:region name="center_main" label="Center Main (Chat)" defaultWidth="Medium" />
+        <flexipage:region name="right_sidebar" label="Right Sidebar (AI/Knowledge)" defaultWidth="Small" />
+    </flexipage:template>
+</design:component>

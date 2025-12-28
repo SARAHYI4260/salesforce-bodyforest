@@ -1,0 +1,37 @@
+/* 탭 내부 콘텐츠 컨테이너 */
+.tab-content {
+    background-color: #f9fbfe;
+    border-radius: 0 0 4px 4px;
+    min-height: 180px;
+}
+
+/* 공통 인사이트 박스 스타일 (스크립트 포맷 기반) */
+.insight-box {
+    background-color: #ffffff;
+    border: 1px solid #dddbda;
+    border-radius: 4px;
+    padding: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #080707;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* 모든 탭의 왼쪽 테두리를 파란색으로 통일 */
+.box-info {
+    border-left: 4px solid #0176d3; /* Salesforce Blue */
+}
+
+/* 제품명 스타일 */
+.product-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1b1c;
+}
+
+/* 탭셋 배경 설정 */
+lightning-tabset {
+    --sds-c-tabs-scoped-color-background-content: transparent;
+}

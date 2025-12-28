@@ -1,0 +1,9 @@
+<design:component label="Service Console Template V1">
+    <flexipage:template>
+        <flexipage:region name="header_left" label="Header Left (Profile)" defaultWidth="Small" />
+        <flexipage:region name="header" label="Header Main (Case Info)" defaultWidth="Large" />
+        <flexipage:region name="main_left" label="Left Sidebar (Contract/Asset)" defaultWidth="Small" />
+        <flexipage:region name="main_center" label="Center Main (Chat)" defaultWidth="Medium" />
+        <flexipage:region name="main_right" label="Right Sidebar (Knowledge/Feed)" defaultWidth="Small" />
+    </flexipage:template>
+</design:component>

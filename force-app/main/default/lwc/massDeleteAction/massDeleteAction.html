@@ -1,0 +1,67 @@
+<template>
+    <div class="slds-box slds-theme_default slds-p-around_medium">
+        
+        <template if:false={isExecuted}>
+            <div class="slds-text-align_center">
+                <div class="slds-m-bottom_medium">
+                    <lightning-icon icon-name="utility:warning" variant="warning" size="large"></lightning-icon>
+                </div>
+                
+                <h2 class="slds-text-heading_medium slds-m-bottom_small">
+                    총 {recordCount}건을 삭제하시겠습니까?
+                </h2>
+                
+                <p class="slds-text-color_error">
+                    삭제된 데이터는 복구할 수 없습니다.
+                </p>
+                
+                <div class="slds-m-top_large">
+                    <lightning-button 
+                        variant="neutral" 
+                        label="취소" 
+                        onclick={handleCancel}
+                        class="slds-m-right_small">
+                    </lightning-button>
+                    
+                    <lightning-button 
+                        variant="destructive" 
+                        label="삭제 확정" 
+                        onclick={handleDelete}>
+                    </lightning-button>
+                </div>
+            </div>
+        </template>
+
+        <template if:true={isLoading}>
+            <div class="slds-text-align_center">
+                <lightning-spinner alternative-text="삭제 중..." size="medium"></lightning-spinner>
+                <p class="slds-m-top_small">{recordCount}건 삭제 진행 중...</p>
+            </div>
+        </template>
+
+        <template if:true={isSuccess}>
+            <div class="slds-text-align_center">
+                <div class="slds-m-bottom_medium">
+                    <lightning-icon icon-name="utility:success" variant="success" size="large"></lightning-icon>
+                </div>
+                
+                <h2 class="slds-text-heading_medium slds-text-color_success">
+                    삭제 완료!
+                </h2>
+                
+                <p class="slds-m-top_small">
+                    {result.successCount}건이 정상적으로 삭제되었습니다.
+                </p>
+                
+                <div class="slds-m-top_large">
+                    <lightning-button 
+                        variant="brand" 
+                        label="목록으로 이동" 
+                        onclick={handleClose}>
+                    </lightning-button>
+                </div>
+            </div>
+        </template>
+
+        </div>
+</template>

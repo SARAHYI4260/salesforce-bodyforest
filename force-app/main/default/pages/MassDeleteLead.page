@@ -1,0 +1,25 @@
+<apex:page standardController="Lead" 
+           recordSetVar="leads" 
+           extensions="MassDeleteExtension">
+    <script type="text/javascript">
+        var selectedIds = '{!selectedIds}';
+        
+        if (!selectedIds || selectedIds.trim() === '') {
+            alert('삭제할 레코드를 최소 하나 이상 선택해주세요.');
+            window.history.back();
+        } else {
+            var flowUrl = '/flow/Mass_Delete_Flow';
+            var params = '?recordIdString=' + encodeURIComponent(selectedIds);
+            
+            var urlParams = new URLSearchParams(window.location.search);
+            var originalRetUrl = urlParams.get('retURL');
+            
+            if (!originalRetUrl) {
+                originalRetUrl = '/lightning/o/Lead/list';
+            }
+            
+            params += '&retURL=' + encodeURIComponent(originalRetUrl);
+            window.location.href = flowUrl + params;
+        }
+    </script>
+</apex:page>

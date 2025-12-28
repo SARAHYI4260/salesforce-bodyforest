@@ -1,0 +1,29 @@
+<apex:page standardController="WorkOrder" 
+           recordSetVar="workOrders" 
+           extensions="MassDeleteExtension">
+    <script type="text/javascript">
+        // 선택된 ID 가져오기
+        var selectedIds = '{!selectedIds}';
+        
+        if (!selectedIds || selectedIds.trim() === '') {
+            alert('삭제할 레코드를 최소 하나 이상 선택해주세요.');
+            window.history.back();
+        } else {
+            // Flow 이름 (만드신 Flow API Name과 일치해야 함)
+            var flowUrl = '/flow/Mass_Delete_Flow';
+            
+            // Flow 입력 변수
+            var params = '?recordIdString=' + encodeURIComponent(selectedIds);
+            
+            var urlParams = new URLSearchParams(window.location.search);
+            var originalRetUrl = urlParams.get('retURL');
+            
+            if (!originalRetUrl) {
+                originalRetUrl = '/lightning/o/WorkOrder/list';
+            }
+            
+            params += '&retURL=' + encodeURIComponent(originalRetUrl);
+            window.location.href = flowUrl + params;
+        }
+    </script>
+</apex:page>

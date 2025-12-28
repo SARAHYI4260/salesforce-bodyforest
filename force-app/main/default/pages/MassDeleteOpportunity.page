@@ -1,0 +1,36 @@
+<apex:page standardController="Opportunity" 
+           recordSetVar="opportunities" 
+           extensions="MassDeleteExtension">
+    <script type="text/javascript">
+        // 1. 선택된 ID 가져오기
+        var selectedIds = '{!selectedIds}';
+        
+        // 2. ID 유효성 체크
+        if (!selectedIds || selectedIds.trim() === '') {
+            alert('삭제할 레코드를 최소 하나 이상 선택해주세요.'); // 🇰🇷 한국어 수정
+            window.history.back();
+        } else {
+            // 3. Flow URL 설정 (API Name 확인 필수: Mass_Delete_Flow)
+            var flowUrl = '/flow/Mass_Delete_Flow';
+            
+            // 4. 파라미터 구성
+            var params = '?recordIdString=' + encodeURIComponent(selectedIds);
+            
+            // 🔥 [핵심 수정] 무한 루프 방지 로직
+            // 현재 VF 페이지(window.location.href)가 아니라, 
+            // Salesforce가 처음에 넘겨준 리스트 뷰 주소(retURL)를 찾아서 사용합니다.
+            var urlParams = new URLSearchParams(window.location.search);
+            var originalRetUrl = urlParams.get('retURL');
+            
+            // 만약 retURL이 없다면 Opportunity 기본 리스트 홈으로 이동
+            if (!originalRetUrl) {
+                originalRetUrl = '/lightning/o/Opportunity/list';
+            }
+            
+            params += '&retURL=' + encodeURIComponent(originalRetUrl);
+            
+            // 5. 이동
+            window.location.href = flowUrl + params;
+        }
+    </script>
+</apex:page>

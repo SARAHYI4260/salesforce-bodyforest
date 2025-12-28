@@ -1,0 +1,33 @@
+<aura:component implements="lightning:recordHomeTemplate" description="사례 페이지 3단 레이아웃">
+    <!-- 바구니(구역) 정의 -->
+    <aura:attribute name="header_left" type="Aura.Component[]" />
+    <aura:attribute name="header_right" type="Aura.Component[]" />
+    <aura:attribute name="main_left" type="Aura.Component[]" />
+    <aura:attribute name="main_center" type="Aura.Component[]" />
+    <aura:attribute name="main_right" type="Aura.Component[]" />
+
+    <div class="slds-fluid">
+        <!-- [상단 헤더] 4:8 비율 -->
+        <div class="slds-grid slds-wrap slds-m-bottom_small">
+            <div class="slds-col slds-size_4-of-12 slds-p-right_small">
+                {!v.header_left}
+            </div>
+            <div class="slds-col slds-size_8-of-12">
+                {!v.header_right}
+            </div>
+        </div>
+
+        <!-- [하단 본문] 3:6:3 비율 -->
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_3-of-12 slds-p-right_small">
+                {!v.main_left}
+            </div>
+            <div class="slds-col slds-size_6-of-12 slds-p-right_small">
+                {!v.main_center}
+            </div>
+            <div class="slds-col slds-size_3-of-12">
+                {!v.main_right}
+            </div>
+        </div>
+    </div>
+</aura:component>

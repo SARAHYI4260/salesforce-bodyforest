@@ -1,0 +1,9 @@
+<design:component label="사례 콘솔 전용 3단 레이아웃">
+    <flexipage:template >
+        <flexipage:region name="header_left" defaultWidth="Small" />
+        <flexipage:region name="header_right" defaultWidth="Large" />
+        <flexipage:region name="main_left" defaultWidth="Small" />
+        <flexipage:region name="main_center" defaultWidth="Medium" />
+        <flexipage:region name="main_right" defaultWidth="Small" />
+    </flexipage:template>
+</design:component>

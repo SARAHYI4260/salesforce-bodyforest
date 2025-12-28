@@ -1,0 +1,85 @@
+<template>
+  <section class="wrap">
+    <div class="card">
+      <h2 class="title">상담 신청</h2>
+
+      <!-- 성 -->
+      <div class="field">
+        <label class="label">성</label>
+        <input class="input" type="text" data-name="lastName" oninput={handleInput}/>
+      </div>
+
+      <!-- 이름 -->
+      <div class="field">
+        <label class="label">이름</label>
+        <input class="input" type="text" data-name="firstName" oninput={handleInput}/>
+      </div>
+
+      <!-- 회사명 -->
+      <div class="field">
+        <label class="label">회사명</label>
+        <input class="input" type="text" data-name="company" oninput={handleInput} />
+      </div>
+
+      <!-- 이메일 -->
+      <div class="field">
+        <label class="label">이메일</label>
+        <input class="input" type="email" data-name="email" oninput={handleInput} />
+      </div>
+
+      <!-- 전화번호 -->
+      <div class="field">
+        <label class="label">전화번호</label>
+        <input class="input" type="tel" data-name="phone" oninput={handleInput} />
+      </div>
+
+      <!-- 휴대폰 -->
+      <div class="field">
+        <label class="label">휴대폰</label>
+        <input class="input" type="tel" data-name="mobilePhone" oninput={handleInput} />
+      </div>
+
+      <!-- 상세주소 -->
+      <div class="field">
+        <label class="label">상세주소</label>
+        <input class="input" type="text" data-name="addressDetail" oninput={handleInput} />
+      </div>
+
+      <!-- 예산 -->
+      <div class="field">
+        <label class="label">예산</label>
+        <input class="input" type="number" data-name="budget" oninput={handleInput} />
+      </div>
+
+      <!-- 월 비용 -->
+      <div class="field">
+        <label class="label">월 비용</label>
+        <input class="input" type="number" data-name="monthlyFee" oninput={handleInput} />
+      </div>
+
+      <!-- 방문 희망일 -->
+      <div class="field">
+        <label class="label">방문 희망일</label>
+        <input class="input" type="date" data-name="desiredVisitDate" oninput={handleInput} />
+      </div>
+
+      <!-- 필수 기능 -->
+      <div class="field">
+        <label class="label">필수 기능</label>
+        <input class="input" type="text" data-name="requiredFeatures" oninput={handleInput} />
+      </div>
+
+      <!-- 상담 내용 -->
+      <div class="field">
+        <label class="label">상담 내용</label>
+        <textarea class="textarea" data-name="consultingSummary" oninput={handleInput}></textarea>
+      </div>
+
+      <div class="footer">
+        <button class="btn" onclick={handleSubmit} disabled={isSubmitting}>
+          {submitLabel}
+        </button>
+      </div>
+    </div>
+  </section>
+</template>
