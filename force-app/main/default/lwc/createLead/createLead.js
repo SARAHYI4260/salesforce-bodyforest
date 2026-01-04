@@ -8,16 +8,11 @@ export default class CreateLead extends LightningElement {
   form = {
     firstName: '',
     lastName: '',
-    company: '',
     email: '',
     phone: '',
     mobilePhone: '',
-    addressDetail: '',
-    budget: null,
-    monthlyFee: null,
-    desiredVisitDate: null,
-    requiredFeatures: '',
-    consultingSummary: ''
+    productInterest: '',
+    leadSource: ''
   };
 
   get submitLabel() {
@@ -26,43 +21,50 @@ export default class CreateLead extends LightningElement {
 
   handleInput(e) {
     const key = e.target.dataset.name;
-    let value = e.target.value;
+    this.form = { ...this.form, [key]: e.target.value };
+  }
 
-    if (key === 'budget' || key === 'monthlyFee') {
-      value = value === '' ? null : Number(value);
-    }
-
-    this.form = { ...this.form, [key]: value };
+  handleSelect(e) {
+    const key = e.target.dataset.name;
+    this.form = { ...this.form, [key]: e.target.value };
   }
 
   async handleSubmit() {
+    // 프론트 필수 체크
+    if (!this.form.lastName || this.form.lastName.trim() === '') {
+      this.showToast('오류', '성(Last Name)은 필수입니다.', 'error');
+      return;
+    }
+
     this.isSubmitting = true;
+
     try {
       const payloadJson = JSON.stringify(this.form);
 
-      await createLeadFromJson({ payloadJson });
+      const leadId = await createLeadFromJson({ payloadJson });
 
-      this.showToast('완료', '상담 신청이 저장되었습니다.', 'success');
+      // ✅ 핵심: Id가 없으면 “성공”으로 처리하지 않음
+      if (!leadId) {
+        this.showToast('오류', '저장되지 않았습니다. (Lead ID를 받지 못했습니다)', 'error');
+        return;
+      }
 
-      // 화면/상태 초기화
+      this.showToast('완료', `저장 완료! (Lead ID: ${leadId})`, 'success');
+
+      // 초기화
       this.form = {
         firstName: '',
         lastName: '',
-        company: '',
         email: '',
         phone: '',
         mobilePhone: '',
-        addressDetail: '',
-        budget: null,
-        monthlyFee: null,
-        desiredVisitDate: null,
-        requiredFeatures: '',
-        consultingSummary: ''
+        productInterest: '',
+        leadSource: ''
       };
-
-      this.template.querySelectorAll('input, textarea').forEach((el) => (el.value = ''));
+      this.template.querySelectorAll('input, select').forEach((el) => (el.value = ''));
     } catch (err) {
-      const msg = err?.body?.message || err?.message || '저장 중 오류가 발생했습니다.';
+      // ✅ Apex에서 던진 “저장 실패: …” 메시지가 여기로 옴
+      const msg = err?.body?.message || err?.message || '저장되지 않았습니다.';
       this.showToast('오류', msg, 'error');
     } finally {
       this.isSubmitting = false;

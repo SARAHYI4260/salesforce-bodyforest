@@ -1,0 +1,63 @@
+<template>
+    <lightning-card title="MyPage (Demo)">
+        <div class="slds-p-around_small slds-text-body_small">
+            <p><b>입력 email:</b> {emailParam}</p>
+            <template if:true={data}>
+                <p><b>매칭 기준:</b> {data.matchedBy}</p>
+            </template>
+        </div>
+
+        <template if:true={errorMessage}>
+            <div class="slds-p-around_medium slds-text-color_error">
+                {errorMessage}
+            </div>
+        </template>
+
+        <template if:true={isLoading}>
+            <div class="slds-p-around_medium">
+                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:true={data}>
+            <lightning-tabset>
+                <lightning-tab label="고객정보">
+                    <div class="slds-p-around_medium">
+                        <p><b>고객명:</b> {data.account.Name}</p>
+                        <p><b>계정번호:</b> {data.account.AccountNumber}</p>
+                        <p><b>전화:</b> {data.account.Phone}</p>
+                        <p><b>모바일:</b> {data.account.PersonMobilePhone}</p>
+                        <p><b>이메일(PersonEmail):</b> {data.account.PersonEmail}</p>
+                        <p><b>이메일(Email__c):</b> {data.account.Email__c}</p>
+                        <p><b>고객등급:</b> {data.account.CustomerLevel__c}</p>
+                        <p><b>렌탈 성실도:</b> {data.account.Rental_Health_Score__c}</p>
+                        <p><b>브랜드 충성도:</b> {data.account.Brand_Loyalty_Score__c}</p>
+                        <p><b>주소:</b> {data.account.Address__c}</p>
+                    </div>
+                </lightning-tab>
+
+                <lightning-tab label="Case">
+                    <div class="slds-p-around_medium">
+                        <lightning-datatable
+                            key-field="Id"
+                            data={data.cases}
+                            columns={caseColumns}
+                            hide-checkbox-column>
+                        </lightning-datatable>
+                    </div>
+                </lightning-tab>
+
+                <lightning-tab label="Work Order">
+                    <div class="slds-p-around_medium">
+                        <lightning-datatable
+                            key-field="Id"
+                            data={data.workOrders}
+                            columns={woColumns}
+                            hide-checkbox-column>
+                        </lightning-datatable>
+                    </div>
+                </lightning-tab>
+            </lightning-tabset>
+        </template>
+    </lightning-card>
+</template>

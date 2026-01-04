@@ -3,76 +3,57 @@
     <div class="card">
       <h2 class="title">상담 신청</h2>
 
-      <!-- 성 -->
       <div class="field">
-        <label class="label">성</label>
+        <label class="label">성 *</label>
         <input class="input" type="text" data-name="lastName" oninput={handleInput}/>
       </div>
 
-      <!-- 이름 -->
       <div class="field">
         <label class="label">이름</label>
         <input class="input" type="text" data-name="firstName" oninput={handleInput}/>
       </div>
 
-      <!-- 회사명 -->
-      <div class="field">
-        <label class="label">회사명</label>
-        <input class="input" type="text" data-name="company" oninput={handleInput} />
-      </div>
-
-      <!-- 이메일 -->
       <div class="field">
         <label class="label">이메일</label>
-        <input class="input" type="email" data-name="email" oninput={handleInput} />
+        <input class="input" type="email" data-name="email" oninput={handleInput}/>
       </div>
 
-      <!-- 전화번호 -->
+
       <div class="field">
         <label class="label">전화번호</label>
-        <input class="input" type="tel" data-name="phone" oninput={handleInput} />
+        <input class="input" type="tel" data-name="phone" oninput={handleInput}/>
       </div>
 
-      <!-- 휴대폰 -->
       <div class="field">
         <label class="label">휴대폰</label>
-        <input class="input" type="tel" data-name="mobilePhone" oninput={handleInput} />
+        <input class="input" type="tel" data-name="mobilePhone" oninput={handleInput}/>
       </div>
 
-      <!-- 상세주소 -->
+      <!-- 관심 제품 (Picklist) -->
       <div class="field">
-        <label class="label">상세주소</label>
-        <input class="input" type="text" data-name="addressDetail" oninput={handleInput} />
+        <label class="label">관심 제품</label>
+        <select class="select" data-name="productInterest" onchange={handleSelect}>
+          <option value="">선택</option>
+          <option value="팬텀 로보">팬텀 로보</option>
+          <option value="메디컬 팬텀">메디컬 팬텀</option>
+          <option value="베이직 포레스트">베이직 포레스트</option>
+          <option value="퀀텀 메디컬">퀀텀 메디컬</option>
+          <option value="렉스엘 프로">렉스엘 프로</option>
+          <option value="제로 그래비티">제로 그래비티</option>
+          <option value="카이저 X">카이저 X</option>
+          <option value="힐링핏 컴포트">힐링핏 컴포트</option>
+        </select>
       </div>
 
-      <!-- 예산 -->
+      <!-- 방문 경로 (LeadSource Picklist) -->
       <div class="field">
-        <label class="label">예산</label>
-        <input class="input" type="number" data-name="budget" oninput={handleInput} />
-      </div>
-
-      <!-- 월 비용 -->
-      <div class="field">
-        <label class="label">월 비용</label>
-        <input class="input" type="number" data-name="monthlyFee" oninput={handleInput} />
-      </div>
-
-      <!-- 방문 희망일 -->
-      <div class="field">
-        <label class="label">방문 희망일</label>
-        <input class="input" type="date" data-name="desiredVisitDate" oninput={handleInput} />
-      </div>
-
-      <!-- 필수 기능 -->
-      <div class="field">
-        <label class="label">필수 기능</label>
-        <input class="input" type="text" data-name="requiredFeatures" oninput={handleInput} />
-      </div>
-
-      <!-- 상담 내용 -->
-      <div class="field">
-        <label class="label">상담 내용</label>
-        <textarea class="textarea" data-name="consultingSummary" oninput={handleInput}></textarea>
+        <label class="label">방문 경로</label>
+        <select class="select" data-name="leadSource" onchange={handleSelect}>
+          <option value="">선택</option>
+          <option value="지인 추천">지인 추천</option>
+          <option value="광고 (SNS 등)">광고 (SNS 등)</option>
+          <option value="단순 방문">단순 방문</option>
+        </select>
       </div>
 
       <div class="footer">

@@ -1,0 +1,77 @@
+<template>
+    <lightning-card title="Case 상세 (Demo)">
+
+        <!-- 🔙 Back to MyPage -->
+        <div class="slds-p-around_small">
+            <lightning-button
+                variant="base"
+                label="← 마이페이지로 돌아가기"
+                onclick={handleBack}>
+            </lightning-button>
+        </div>
+
+        <!-- ⏳ Loading -->
+        <template if:true={isLoading}>
+            <div class="slds-p-around_medium">
+                <lightning-spinner alternative-text="Loading"></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- ❌ Error -->
+        <template if:true={errorMessage}>
+            <div class="slds-p-around_medium slds-text-color_error">
+                {errorMessage}
+            </div>
+        </template>
+
+        <!-- ✅ Data -->
+        <template if:true={data}>
+            <div class="slds-p-around_medium">
+
+                <h3 class="slds-text-heading_small slds-m-bottom_small">
+                    Case #{data.caseRecord.CaseNumber}
+                    <template if:true={data.caseRecord.Subject}>
+                        &nbsp;- {data.caseRecord.Subject}
+                    </template>
+                </h3>
+
+                <!-- Case 기본 정보 -->
+                <div class="slds-grid slds-wrap slds-gutters">
+                    <div class="slds-col slds-size_1-of-2">
+                        <p><b>Status:</b> {data.caseRecord.Status}</p>
+                        <p><b>Priority:</b> {data.caseRecord.Priority}</p>
+                        <p><b>Origin:</b> {data.caseRecord.Origin}</p>
+                        <p><b>Reason:</b> {data.caseRecord.Reason}</p>
+                        <p><b>Type:</b> {data.caseRecord.Type}</p>
+                        <p><b>Created:</b> {data.caseRecord.CreatedDate}</p>
+                        <p><b>Closed:</b> {data.caseRecord.ClosedDate}</p>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <template if:true={data.caseRecord.Description}>
+                    <div class="slds-m-top_medium">
+                        <p><b>Description</b></p>
+                        <div class="slds-box slds-theme_default">
+                            {data.caseRecord.Description}
+                        </div>
+                    </div>
+                </template>
+
+                <!-- Work Orders -->
+                <div class="slds-m-top_large">
+                    <h3 class="slds-text-heading_small slds-m-bottom_small">Work Orders</h3>
+                    <div class="table-scroll">
+                        <lightning-datatable
+                            key-field="Id"
+                            data={data.workOrders}
+                            columns={woColumns}
+                            hide-checkbox-column>
+                        </lightning-datatable>
+                    </div>
+                </div>
+
+            </div>
+        </template>
+    </lightning-card>
+</template>
