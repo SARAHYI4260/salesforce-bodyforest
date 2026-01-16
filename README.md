@@ -16,8 +16,6 @@ Salesforce 기반 End-to-End CRM 솔루션을 설계·구현했습니다.
 
 - **프로젝트 기업** : BodyForest  
 - **레퍼런스 기업** : Bodyfriend  
-- **발표자** : 강주성  
-- **서포트** : 전나영  
 
 ---
 
